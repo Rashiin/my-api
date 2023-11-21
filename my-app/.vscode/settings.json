@@ -1,0 +1,31 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "mysql",
+      "database": "test",
+      "username": "rashin",
+      "password": "Rashin1382"
+    },
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "0f01e9d9-0da8-4ce1-9b65-6c40a7d528ec.hsvc.ir",
+      "port": 31957,
+      "driver": "MSSQL",
+      "name": "test",
+      "database": "newdbv1",
+      "username": "sa"
+    }
+  ]
+}

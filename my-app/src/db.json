@@ -1,0 +1,212 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+    "title": "resarchteam",
+    "version": "1.0"
+    },
+    "paths": {
+    "/api/Email": {
+    "post": {
+    "tags": [
+    "Email"
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmailData"
+    }
+    },
+    "text/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmailData"
+    }
+    },
+    "application/*+json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmailData"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "Success"
+    }
+    }
+    }
+    },
+    "/PostSingleFile": {
+    "post": {
+    "tags": [
+    "Files"
+    ],
+    "requestBody": {
+    "content": {
+    "multipart/form-data": {
+    "schema": {
+    "type": "object",
+    "properties": {
+    "FileDetails": {
+    "type": "string",
+    "format": "binary"
+    },
+    "FileType": {
+    "$ref": "#/components/schemas/FileType"
+    }
+    }
+    },
+    "encoding": {
+    "FileDetails": {
+    "style": "form"
+    },
+    "FileType": {
+    "style": "form"
+    }
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "Success"
+    }
+    }
+    }
+    },
+    "/PostMultipleFile": {
+    "post": {
+    "tags": [
+    "Files"
+    ],
+    "requestBody": {
+    "content": {
+    "multipart/form-data": {
+    "schema": {
+    "type": "object",
+    "properties": {
+    "fileDetails": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/FileUploadModel"
+    }
+    }
+    }
+    },
+    "encoding": {
+    "fileDetails": {
+    "style": "form"
+    }
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "Success"
+    }
+    }
+    }
+    },
+    "/DownloadFile": {
+    "get": {
+    "tags": [
+    "Files"
+    ],
+    "parameters": [
+    {
+    "name": "id",
+    "in": "query",
+    "schema": {
+    "type": "integer",
+    "format": "int32"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "Success"
+    }
+    }
+    }
+    },
+    "/DownloadFileByName": {
+    "get": {
+    "tags": [
+    "Files"
+    ],
+    "parameters": [
+    {
+    "name": "Name",
+    "in": "query",
+    "schema": {
+    "type": "string"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "Success"
+    }
+    }
+    }
+    },
+    "/ShowAllFiles": {
+    "get": {
+    "tags": [
+    "Files"
+    ],
+    "responses": {
+    "200": {
+    "description": "Success"
+    }
+    }
+    }
+    }
+    },
+    "components": {
+    "schemas": {
+    "EmailData": {
+    "type": "object",
+    "properties": {
+    "subject": {
+    "type": "string",
+    "nullable": true
+    },
+    "body": {
+    "type": "string",
+    "nullable": true
+    },
+    "attachmentPath": {
+    "type": "string",
+    "nullable": true
+    }
+    },
+    "additionalProperties": false
+    },
+    "FileType": {
+    "enum": [
+    1,
+    2,
+    3
+    ],
+    "type": "integer",
+    "format": "int32"
+    },
+    "FileUploadModel": {
+    "type": "object",
+    "properties": {
+    "fileDetails": {
+    "type": "string",
+    "format": "binary",
+    "nullable": true
+    },
+    "fileType": {
+    "$ref": "#/components/schemas/FileType"
+    }
+    },
+    "additionalProperties": false
+    }
+    }
+    }
+    }
